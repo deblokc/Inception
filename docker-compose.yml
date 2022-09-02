@@ -3,16 +3,20 @@ services:
   mariadb:
     build: "mariadb"
     container_name: "mariadb"
-    volumes: "/var/lib/mysql"
     networks:
       - back
     restart: always
+    ulimits:
+      nofile:
+        soft: "100000"
+        hard: "100000"
   wordpress:
     build: "WordPress"
     container_name: "WordPress"
-    volumes: "/var/www/html"
     depends_on:
       - mariadb
     networks:
       - back
     restart: always
+networks:
+  back:
