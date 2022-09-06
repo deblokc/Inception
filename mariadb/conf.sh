@@ -12,7 +12,7 @@ EOF
 
 echo "launch mysqld"
 service mysql start
-until mysqladmin -uroot --password="" status &> /dev/null; do sleep 1; done;
+while [ [ ! mysqladmin -uroot --password="" status &> /dev/null ] && [ ! mysqladmin -uroot --password="password" status &> /dev/null ] ] ; do sleep 1; done;
 sleep 1
 echo "executing mysql.conf";
 mysql --user=root --password="" <mysql.conf

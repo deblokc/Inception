@@ -17,6 +17,24 @@ services:
       - mariadb
     networks:
       - back
+      - front
     restart: always
+    volumes:
+      - www:/WordPress
+  nginx:
+    build: "nginx"
+    container_name: "nginx"
+    depends_on:
+      - wordpress
+    networks:
+      - front
+    restart: always
+    ports:
+      - "443:443"
+    volumes:
+      - www:/WordPress
 networks:
   back:
+  front:
+volumes:
+  www:
