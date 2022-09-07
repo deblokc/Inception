@@ -1,4 +1,4 @@
-version:  "3"
+version:  "3.9"
 services:
   mariadb:
     build: "mariadb"
@@ -10,9 +10,11 @@ services:
       nofile:
         soft: "100000"
         hard: "100000"
+    env_file:
+      .env
   wordpress:
-    build: "WordPress"
-    container_name: "WordPress"
+    build: "wordpress"
+    container_name: "wordpress"
     depends_on:
       - mariadb
     networks:
@@ -21,6 +23,8 @@ services:
     restart: always
     volumes:
       - www:/WordPress
+    env_file:
+      - .env
   nginx:
     build: "nginx"
     container_name: "nginx"
@@ -38,3 +42,7 @@ networks:
   front:
 volumes:
   www:
+    driver_opts:
+      type: none
+      device: /home/theodore/Inception/tmp
+      o: bind
