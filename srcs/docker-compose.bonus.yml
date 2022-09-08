@@ -31,6 +31,7 @@ services:
     build: "requirements/nginx"
     container_name: "nginx"
     depends_on:
+      - adminer
       - wordpress
     networks:
       - front
@@ -39,6 +40,8 @@ services:
       - "443:443"
     volumes:
       - www:/WordPress
+    environment:
+      - BONUS=1
   redis:
     build: "requirements/bonus/redis"
     container_name: "redis"
@@ -51,6 +54,16 @@ services:
       - "6379:6379"
     env_file:
       - .env
+  adminer:
+    build: "requirements/bonus/adminer"
+    container_name: "adminer"
+    depends_on:
+      - mariadb
+    networks:
+      - back
+    restart: always
+    volumes:
+      - www:/WordPress
 networks:
   back:
   front:
