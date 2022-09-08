@@ -1,0 +1,48 @@
+version:  "3.9"
+services:
+  mariadb:
+    build: "mariadb"
+    container_name: "mariadb"
+    networks:
+      - back
+    restart: always
+    ulimits:
+      nofile:
+        soft: "100000"
+        hard: "100000"
+    env_file:
+      .env
+  wordpress:
+    build: "wordpress"
+    container_name: "wordpress"
+    depends_on:
+      - mariadb
+    networks:
+      - back
+      - front
+    restart: always
+    volumes:
+      - www:/WordPress
+    env_file:
+      - .env
+  nginx:
+    build: "nginx"
+    container_name: "nginx"
+    depends_on:
+      - wordpress
+    networks:
+      - front
+    restart: always
+    ports:
+      - "443:443"
+    volumes:
+      - www:/WordPress
+networks:
+  back:
+  front:
+volumes:
+  www:
+    driver_opts:
+      type: none
+      device: /home/theodore/Inception/tmp
+      o: bind
