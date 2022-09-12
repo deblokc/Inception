@@ -29,7 +29,8 @@ then
 else
 	cd /WordPress;\
 	wp plugin deactivate redis-cache --uninstall --allow-root &> /dev/null;\
-	rm -rf adminer;
+	rm -rf adminer;\
+	rm -rf site;
 fi
 
 echo "launching php-fpm"

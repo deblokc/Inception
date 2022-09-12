@@ -6,4 +6,4 @@ RUN 	curl -L	https://github.com/google/cadvisor/releases/download/v0.37.5/cadvis
 				-o /usr/bin/cadvisor --silent
 RUN		chmod +x /usr/bin/cadvisor
 
-ENTRYPOINT	["/usr/bin/cadvisor"]
+CMD	["/usr/bin/cadvisor"]

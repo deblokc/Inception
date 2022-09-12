@@ -101,6 +101,8 @@ services:
       - back
       - front
     restart: always
+    ports:
+      - "8080:8080"
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
@@ -108,9 +110,6 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
       - /cgroup:/cgroup:ro
-    command:
-      - '-port=7000'
-      - '-url_base_prefix=/cadvisor'
     privileged: true
 networks:
   back:
