@@ -6,6 +6,10 @@ RUN apt update ; apt -y install lsb-release apt-transport-https ca-certificates 
 
 RUN apt install php7.4-cgi php7.4-mysql php7.4-fpm php7.4-pdo php7.4-gd php7.4-cli -y
 
+RUN mkdir -p /WordPress/site
+
 COPY conf.sh /tmp/conf.sh
+
+COPY index.html /WordPress/site/index.html
 
 ENTRYPOINT ["/tmp/conf.sh"]

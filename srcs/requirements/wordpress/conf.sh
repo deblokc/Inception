@@ -28,7 +28,8 @@ then
 	wp redis enable --allow-root &> /dev/null;
 else
 	cd /WordPress;\
-	wp plugin deactivate redis-cache --uninstall --allow-root &> /dev/null;
+	wp plugin deactivate redis-cache --uninstall --allow-root &> /dev/null;\
+	rm -rf adminer;
 fi
 
 echo "launching php-fpm"

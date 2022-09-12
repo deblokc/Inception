@@ -2,7 +2,9 @@
 
 if [ $BONUS ]
 then
-	mkdir -p /wordpress/adminer;
+	mkdir -p /WordPress/adminer;
+else
+	rm -rf /WordPress/adminer &> /dev/null;
 fi
 
 ln -s /etc/nginx/sites-available/tnaton.42.fr /etc/nginx/sites-enabled/tnaton.42.fr
