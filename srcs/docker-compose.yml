@@ -3,6 +3,7 @@ services:
   mariadb:
     build: "requirements/mariadb"
     container_name: "mariadb"
+    image: mariadb:inception
     networks:
       - back
     restart: always
@@ -15,6 +16,7 @@ services:
   wordpress:
     build: "requirements/wordpress"
     container_name: "wordpress"
+    image: wordpress:inception
     depends_on:
       - mariadb
     networks:
@@ -28,6 +30,7 @@ services:
   nginx:
     build: "requirements/nginx"
     container_name: "nginx"
+    image: nginx:inception
     depends_on:
       - wordpress
     networks:
