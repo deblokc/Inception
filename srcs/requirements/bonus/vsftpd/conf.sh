@@ -4,14 +4,14 @@ mkdir -p ftp
 
 mkdir -p /var/run/vsftpd/empty
 
-adduser tnaton --disabled-password --gecos "" --home /WordPress --shell /bin/bash
+adduser tnaton --disabled-password --gecos "" --home /inception/WordPress --shell /bin/bash
 
 echo "tnaton:motdepasse" | chpasswd
 
 usermod -aG www-data tnaton
 
-chgrp -R tnaton /WordPress
-chmod -R g+w /WordPress
+chgrp -R tnaton /inception/WordPress
+chmod -R g+w /inception/WordPress
 
 echo "
 seccomp_sandbox=NO

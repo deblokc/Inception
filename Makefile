@@ -1,9 +1,9 @@
 Inception:
-	sudo mkdir -p /home/theodore/data
+	sudo mkdir -p /home/tnaton/data
 	sudo docker-compose -f srcs/docker-compose.yml up --build
 
 bonus:
-	sudo mkdir -p /home/theodore/data
+	sudo mkdir -p /home/tnaton/data
 	sudo docker-compose -f srcs/docker-compose.bonus.yml up --build
 
 clean:
@@ -13,4 +13,4 @@ fclean:
 	@sudo sh ./.fclean.sh
 
 fcleandata: fclean
-	sudo rm -rf /home/theodore/data
+	sudo rm -rf /home/tnaton/data
