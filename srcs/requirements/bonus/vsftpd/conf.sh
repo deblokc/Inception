@@ -4,13 +4,13 @@ mkdir -p ftp
 
 mkdir -p /var/run/vsftpd/empty
 
-adduser tnaton --disabled-password --gecos "" --home /inception/WordPress --shell /bin/bash
+adduser $FTP_USER --disabled-password --gecos "" --home /inception/WordPress --shell /bin/bash
 
-echo "tnaton:motdepasse" | chpasswd
+echo "$FTP_USER:$FTP_PW" | chpasswd
 
-usermod -aG www-data tnaton
+usermod -aG www-data $FTP_USER
 
-chgrp -R tnaton /inception/WordPress
+chgrp -R $FTP_USER /inception/WordPress
 chmod -R g+w /inception/WordPress
 
 echo "

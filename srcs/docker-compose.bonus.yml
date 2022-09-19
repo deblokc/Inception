@@ -83,6 +83,8 @@ services:
       - "20:21"
     volumes:
       - www:/inception
+    env_file:
+      - .env
 
   site:
     build: "requirements/bonus/site"
