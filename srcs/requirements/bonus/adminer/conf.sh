@@ -2,18 +2,18 @@
 
 echo "downloading adminer"
 
-mkdir -p /WordPress/adminer;
+mkdir -p /inception/adminer;
 
-cd /WordPress/adminer; wget -O index.php https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php;
+cd /inception/adminer; wget -O index.php https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php;
 
-cp /WordPress/adminer/index.php /tmp/index.php
+cp /inception/adminer/index.php /tmp/index.php
 
-if [ "test -e /WordPress/adminer/index.php" ]
+if [ "test -e /inception/adminer/index.php" ]
 then
-	cp /tmp/index.php /WordPress/adminer/index.php
+	cp /tmp/index.php /inception/adminer/index.php
 fi
 
-chown -R www-data:www-data /WordPress/adminer
+chown -R www-data:www-data /inception/adminer
 
 mkdir /run/php
 

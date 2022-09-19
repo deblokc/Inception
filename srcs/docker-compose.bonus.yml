@@ -23,7 +23,7 @@ services:
       - front
     restart: always
     volumes:
-      - www:/WordPress
+      - www:/inception
     env_file:
       - .env
     environment:
@@ -41,7 +41,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - www:/WordPress
+      - www:/inception
     environment:
       - BONUS=1
 
@@ -68,7 +68,7 @@ services:
       - front
     restart: always
     volumes:
-      - www:/WordPress
+      - www:/inception
 
   vsftpd:
     build: "requirements/bonus/vsftpd"
@@ -82,7 +82,7 @@ services:
     ports:
       - "20:21"
     volumes:
-      - www:/WordPress
+      - www:/inception
 
   site:
     build: "requirements/bonus/site"
@@ -92,7 +92,7 @@ services:
       - front
     restart: always
     volumes:
-      - www:/WordPress
+      - www:/inception
 
   cadvisor:
     build: "requirements/bonus/cadvisor"

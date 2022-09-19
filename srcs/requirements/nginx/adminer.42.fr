@@ -1,9 +1,9 @@
 server {
         ## Your website name goes here.
-        server_name tnaton.42.fr;
+        server_name adminer.42.fr;
 
         ## Your only path reference.
-        root /inception/WordPress;
+        root /inception/adminer;
 
         ## This should be in your http block and if it is, it's not needed here.
         index index.php index.html index.htm;
@@ -11,21 +11,21 @@ server {
         listen *:443 ssl;
         listen [::]:443 ssl;
 
-        ssl_certificate /etc/ssl/certs/wp.crt;
-        ssl_certificate_key /etc/ssl/private/key.pem;
+        ssl_certificate /etc/ssl/certs/adminer.crt;
+        ssl_certificate_key /etc/ssl/private/adminerkey.pem;
         ssl_protocols       TLSv1.2 TLSv1.3;
 
         location / {
-              #   try_files $uri $uri/ /index.php?q=$uri&$args;
+                # try_files $uri $uri/ /index.php?q=$uri&$args;
                  location ~ \.php$ {
                         fastcgi_split_path_info ^(.+\.php)(/.+)$;
                         #NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
                         include fastcgi_params;
                         fastcgi_intercept_errors on;
-                        fastcgi_pass wordpress:9000;
+                        fastcgi_pass adminer:9000;
                         fastcgi_index index.php;
                         #The following parameter can be also included in fastcgi_params file
                         fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
-                }
+                 }
         }
 }

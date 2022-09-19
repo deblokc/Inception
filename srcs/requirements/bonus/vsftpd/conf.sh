@@ -135,7 +135,7 @@ listen=YES
 # Make sure, that one of the listen options is commented !!
 #listen_ipv6=YES
 
-local_root=/WordPress
+local_root=/inception/WordPress
 
 log_ftp_protocol=YES
 vsftpd_log_file=/var/log/vsftpd.log
