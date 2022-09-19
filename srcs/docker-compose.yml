@@ -22,7 +22,7 @@ services:
       - front
     restart: always
     volumes:
-      - www:/WordPress
+      - www:/inception/WordPress
     env_file:
       - .env
   nginx:
@@ -36,7 +36,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - www:/WordPress
+      - www:/inception/WordPress
 networks:
   back:
   front:
@@ -44,5 +44,5 @@ volumes:
   www:
     driver_opts:
       type: none
-      device: /home/theodore/data
+      device: /home/tnaton/data
       o: bind

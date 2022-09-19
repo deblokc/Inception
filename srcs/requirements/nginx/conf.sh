@@ -14,7 +14,13 @@ fi
 ln -s /etc/nginx/sites-available/tnaton.42.fr /etc/nginx/sites-enabled/tnaton.42.fr
 
 openssl req -newkey rsa:4096 -sha256 -x509 -nodes -out /etc/ssl/certs/wp.crt -keyout /etc/ssl/private/key.pem -subj "/C=FR/ST=France/L=Paris/O=42/OU=tnaton/CN=tnaton.42.fr"; rm /etc/nginx/sites-enabled/default;
-openssl req -newkey rsa:4096 -sha256 -x509 -nodes -out /etc/ssl/certs/adminer.crt -keyout /etc/ssl/private/adminerkey.pem -subj "/C=FR/ST=France/L=Paris/O=42/OU=tnaton/CN=adminer.42.fr";
-openssl req -newkey rsa:4096 -sha256 -x509 -nodes -out /etc/ssl/certs/site.crt -keyout /etc/ssl/private/sitekey.pem -subj "/C=FR/ST=France/L=Paris/O=42/OU=tnaton/CN=site.42.fr";
+
+if [ $BONUS ]
+then
+	openssl req -newkey rsa:4096 -sha256 -x509 -nodes -out /etc/ssl/certs/adminer.crt -keyout /etc/ssl/private/adminerkey.pem -subj "/C=FR/ST=France/L=Paris/O=42/OU=tnaton/CN=adminer.42.fr";
+	openssl req -newkey rsa:4096 -sha256 -x509 -nodes -out /etc/ssl/certs/site.crt -keyout /etc/ssl/private/sitekey.pem -subj "/C=FR/ST=France/L=Paris/O=42/OU=tnaton/CN=site.42.fr";
+fi
+
+echo "launching nginx";
 
 exec nginx -g "daemon off;"
