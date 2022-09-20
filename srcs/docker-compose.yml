@@ -5,7 +5,7 @@ services:
     container_name: "mariadb"
     image: mariadb:inception
     networks:
-      - back
+      - inception
     restart: always
     ulimits:
       nofile:
@@ -20,8 +20,7 @@ services:
     depends_on:
       - mariadb
     networks:
-      - back
-      - front
+      - inception
     restart: always
     volumes:
       - www:/inception/WordPress
@@ -34,15 +33,14 @@ services:
     depends_on:
       - wordpress
     networks:
-      - front
+      - inception
     restart: always
     ports:
       - "443:443"
     volumes:
       - www:/inception
 networks:
-  back:
-  front:
+  inception:
 volumes:
   www:
     driver_opts:
