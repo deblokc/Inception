@@ -11,7 +11,7 @@ echo "downloading wordpress..."
 
 mkdir -p /inception/WordPress
 
-cd /inception/WordPress; wp core download --allow-root &> /dev/null; \
+cd /inception/WordPress; pwd; wp core download --allow-root &> /dev/null; \
 wp config create --dbhost=mariadb --dbname=WordPress --dbuser=$MARIA_USER --dbpass=$MARIA_PW --allow-root &> /dev/null; \
 wp core install --allow-root --url=$DOMAIN_NAME --title="My Wordpress" --admin_user=$ADMIN_NAME --admin_email="$ADMIN_NAME"@student.42.fr --admin_password=$ADMIN_PW --skip-email &> /dev/null;\
 wp user create $WP_USER $WP_USER@Imreal.com --user_pass=$WP_PW --role=editor --allow-root &> /dev/null;

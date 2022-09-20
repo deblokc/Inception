@@ -1,9 +1,9 @@
 Inception:
-	sudo mkdir -p /home/tnaton/data
+	sudo mkdir -p /home/tnaton/data/mysql
 	sudo docker-compose -f srcs/docker-compose.yml up --build
 
 bonus:
-	sudo mkdir -p /home/tnaton/data
+	sudo mkdir -p /home/tnaton/data/mysql
 	sudo docker-compose -f srcs/docker-compose.bonus.yml up --build
 
 clean:
