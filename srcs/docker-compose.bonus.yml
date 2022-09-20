@@ -7,6 +7,8 @@ services:
     networks:
       - inception
     restart: always
+    volumes:
+      - db:/var/lib/mysql
     ulimits:
       nofile:
         soft: "100000"
@@ -119,6 +121,11 @@ services:
 networks:
   inception:
 volumes:
+  db:
+    driver_opts:
+      type: none
+      device: /home/tnaton/data/mysql
+      o: bind
   www:
     driver_opts:
       type: none
